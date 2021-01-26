@@ -31,8 +31,6 @@ import React from 'react';
 
 function Categories({ items, onClickItem }) {
 
-    //const [state, setstate] = useState(initialState);
-
     const [activeItem , setActiveItem] = React.useState(null);
 
     const onSelectItem = (index) => {
@@ -51,6 +49,7 @@ function Categories({ items, onClickItem }) {
                         >{name}</li>
                     ))
                 }
+            
             </ul>
         </div>
     );
