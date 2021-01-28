@@ -3,7 +3,7 @@ const initState = {
     sortBy: 'popular'
 };
 
-const filters = (state = initialState, action) => {
+const filters = (state = initState, action) => {
 
     if (action.type === 'SET_SORT_BY' ) {
         return {
@@ -11,6 +11,13 @@ const filters = (state = initialState, action) => {
             sortBy: action.payload,
         };
     }
+    if (action.type === 'SET_CATEGORY' ) {
+        return {
+            ...state,
+            category: action.payload,
+        };
+    }
+
     return state;
 };
 
