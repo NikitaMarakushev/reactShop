@@ -1,31 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store from './redux/store';
 import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import './scss/app.scss';
 
 import App from './App';
 
-console.log(store.getState());
-
-const inc = () => {
-    store.dispatch({
-        type: 'INCREMENT'
-    });
-};
-
-store.subscribe(() => {
-    console.log('CHANGED', store.getState());
-})
+store.dispatch({
+    type: 'SET_SORT_BY',
+    payload: 'price'
+}); 
 
 ReactDOM.render( 
-    <React.StrictMode >
-        <Router>
-            <button onClick={inc} > +</button>
+    <Router>
+        <Provider store={store}>
             <App />
-        </Router>
-    </React.StrictMode>,
+        </Provider>
+    </Router>,
     document.getElementById('root')
 );
