@@ -8,8 +8,7 @@ function SortPopup({ items }) {
     const activeLabel = items[activeItem]
 
     const handleOutsideClick = (event) => {
-      const path = event.path || (event.composedPath && event.composedPath());
-      if (!path.includes(sortRef.current)) {
+      if (!event.path.includes(sortRef.current)) {
         setVisiblePopup(false);
       }
     };
@@ -21,6 +20,7 @@ function SortPopup({ items }) {
 
     const onSelectItem = (index) => {
       setActiveItem(index);
+      setVisiblePopup(false);
     };
 
     React.useEffect(() => {
