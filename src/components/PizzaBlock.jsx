@@ -18,6 +18,7 @@ function PizzaBlock({ name, types,  imageUrl, price, sizes}) {
         setActiveSize(index);
     }
 
+   
     return (
         <div className="pizza-block">
         <img className="pizza-block__image" src={imageUrl} alt="Pizza" />

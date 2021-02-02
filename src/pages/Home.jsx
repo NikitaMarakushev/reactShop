@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { fetchPizzas } from './redux/actions/pizzas';
 import { Categories, SortPopup, PizzaBlock } from '../components';
 import { setCategory } from '../redux/actions/filters';
 
@@ -9,12 +9,15 @@ const categoryNames = ['Мясные', 'Вегетарианская', 'Грил
 function Home() {
 
    const dispatch = useDispatch();
-   const { items } = useSelector(({ pizzas, filters}) => {
-      return {
-        items: pizzas.items,
-      };
-   });
+   const { items } = useSelector(({ pizzas }) => pizzas.items);
 
+   React.useEffect(() => {
+      if (!items.length) {
+         dispatch(fetchPizzas());
+      }
+   }, []);
+
+ 
    const onSelectCategory = React.useCallback((index) => {
       dispatch(setCategory(index));
    }, []);
