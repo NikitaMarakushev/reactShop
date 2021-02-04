@@ -6,9 +6,6 @@ import PlaceholderBlock from './PlacehoolderBlock';
 
 function PizzaBlock({ name, types,  imageUrl, price, sizes, isLoading}) {
 
-    if(isLoading) {
-        return ();
-    }
     //States
     const [activeType, setActiveType] =  React.useState(types[0]);
     const [activeSize, setActiveSize] =  React.useState(sizes[0]);
